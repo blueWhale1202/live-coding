@@ -22,8 +22,8 @@ export const Container = ({ children }: Props) => {
         }
     }, [isMobile, onCollapse, onExpand]);
     return (
-        <div className={cn("ml-[70px] flex-1", collapsed && "lg:ml-60")}>
-            Container
+        <div className={cn("ml-[70px] flex-1", !collapsed && "lg:ml-60")}>
+            {children}
         </div>
     );
 };

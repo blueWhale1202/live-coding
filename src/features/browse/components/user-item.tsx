@@ -28,6 +28,7 @@ export const UserItem = ({ username, imageUrl, isLive }: Props) => {
 
     return (
         <Button
+            asChild
             variant="ghost"
             className={cn(
                 "h-12 w-full",

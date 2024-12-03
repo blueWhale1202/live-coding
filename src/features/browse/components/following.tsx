@@ -1,33 +1,36 @@
 "use client";
 
-import { User } from "@prisma/client";
+import { Prisma } from "@prisma/client";
+
 import { UserItem, UserItemSkeleton } from "./user-item";
 
 import { useSidebar } from "@/providers/sidebar-store-provider";
 
 type Props = {
-    users: User[];
+    data: Prisma.FollowGetPayload<{ include: { following: true } }>[];
 };
 
-export const Recommended = ({ users }: Props) => {
+export const Following = ({ data }: Props) => {
     const { collapsed } = useSidebar((state) => state);
 
-    const showLabel = !collapsed && users.length > 0;
+    if (!data.length) {
+        return null;
+    }
 
     return (
         <div>
-            {showLabel && (
+            {!collapsed && (
                 <div className="mb-4 pl-6">
-                    <p className="text-sm text-muted-foreground">Recommended</p>
+                    <p className="text-sm text-muted-foreground">Following</p>
                 </div>
             )}
 
             <ul className="space-y-2 px-2">
-                {users.map((user) => (
-                    <li key={user.id}>
+                {data.map((follow) => (
+                    <li key={follow.id}>
                         <UserItem
-                            username={user.username}
-                            imageUrl={user.imageUrl}
+                            username={follow.following.username}
+                            imageUrl={follow.following.imageUrl}
                         />
                     </li>
                 ))}
@@ -36,9 +39,9 @@ export const Recommended = ({ users }: Props) => {
     );
 };
 
-export const RecommendedSkeleton = () => {
+export const FollowingSkeleton = () => {
     return (
-        <ul className="px-2">
+        <ul className="px-2 pt-2 lg:pt-0">
             {[...Array(3)].map((_, index) => (
                 <UserItemSkeleton key={index} />
             ))}

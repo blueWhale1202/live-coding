@@ -1,5 +1,6 @@
 "use client";
 
+import { FollowingSkeleton } from "./following";
 import { RecommendedSkeleton } from "./recommended";
 import { ToggleSkeleton } from "./toggle";
 
@@ -21,6 +22,7 @@ export const Wrapper = ({ children }: Props) => {
         return (
             <aside className="fixed left-0 z-50 flex h-full w-[70px] flex-col border-r border-[#2d2e35] bg-background lg:w-60">
                 <ToggleSkeleton />
+                <FollowingSkeleton />
                 <RecommendedSkeleton />
             </aside>
         );
