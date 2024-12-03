@@ -1,9 +1,12 @@
 "use client";
 
-import { Hint } from "@/components/hint";
 import { Button } from "@/components/ui/button";
-import { useSidebar } from "@/providers/sidebar-store-provider";
+import { Skeleton } from "@/components/ui/skeleton";
+
+import { Hint } from "@/components/hint";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
+
+import { useSidebar } from "@/providers/sidebar-store-provider";
 
 export const Toggle = () => {
     const { collapsed, onCollapse, onExpand } = useSidebar((state) => state);
@@ -40,5 +43,14 @@ export const Toggle = () => {
                 </div>
             )}
         </>
+    );
+};
+
+export const ToggleSkeleton = () => {
+    return (
+        <div className="mb-2 hidden w-full items-center justify-between p-3 pl-6 lg:flex">
+            <Skeleton className="h-6 w-[100px]" />
+            <Skeleton className="size-6" />
+        </div>
     );
 };
