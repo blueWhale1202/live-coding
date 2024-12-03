@@ -1,9 +1,5 @@
 import { db } from "@/lib/db";
-import {
-    DeletedObjectJSON,
-    UserJSON,
-    WebhookEvent,
-} from "@clerk/nextjs/server";
+import { WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { Webhook } from "svix";
 
@@ -54,55 +50,51 @@ export async function POST(req: Request) {
 
     const eventType = evt.type;
 
-    switch (eventType) {
-        case "user.created": {
-            console.log("User created");
-            const data = evt.data as UserJSON;
-            await db.user.create({
-                data: {
-                    externalUserId: data.id,
-                    imageUrl: data.image_url,
-                    username: data.username!,
-                },
-            });
-            break;
-        }
-        case "user.updated": {
-            console.log("User updated");
-            const data = evt.data as UserJSON;
-            const currentUser = await db.user.findUnique({
-                where: {
-                    externalUserId: data.id,
-                },
-            });
+    if (eventType === "user.created") {
+        await db.user.create({
+            data: {
+                externalUserId: payload.data.id,
+                imageUrl: payload.data.image_url,
+                username: payload.data.username,
+            },
+        });
+        console.log("User created");
+    }
 
-            if (!currentUser) {
-                return new Response("User not found", {
-                    status: 404,
-                });
-            }
+    if (eventType === "user.updated") {
+        const currentUser = await db.user.findUnique({
+            where: {
+                externalUserId: payload.data.id,
+            },
+        });
 
-            await db.user.update({
-                where: {
-                    externalUserId: data.id,
-                },
-                data: {
-                    imageUrl: data.image_url,
-                    username: data.username!,
-                },
+        if (!currentUser) {
+            return new Response("Error: User not found", {
+                status: 404,
             });
-            break;
         }
-        case "user.deleted": {
-            console.log("User deleted");
-            const data = evt.data as DeletedObjectJSON;
-            await db.user.delete({
-                where: {
-                    externalUserId: data.id,
-                },
-            });
-            break;
-        }
+
+        await db.user.update({
+            where: {
+                externalUserId: payload.data.id,
+            },
+            data: {
+                imageUrl: payload.data.image_url,
+                username: payload.data.username,
+            },
+        });
+
+        console.log("User updated");
+    }
+
+    if (eventType === "user.deleted") {
+        await db.user.delete({
+            where: {
+                externalUserId: payload.data.id,
+            },
+        });
+
+        console.log("User deleted");
     }
 
     return new Response("Webhook received", { status: 200 });
