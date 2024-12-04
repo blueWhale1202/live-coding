@@ -40,7 +40,7 @@ export const Search = () => {
             onSubmit={onSubmit}
         >
             <Input
-                className="rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
+                className="h-9 rounded-r-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
                 placeholder="Search"
                 onChange={(e) => setValue(e.target.value)}
                 value={value}

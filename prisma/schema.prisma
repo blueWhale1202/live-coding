@@ -34,7 +34,7 @@ model Stream {
   thumbnailUrl String?
 
   ingressId String?
-  serverId  String?
+  serverUrl String?
   streamKey String?
 
   isLive              Boolean @default(false)
