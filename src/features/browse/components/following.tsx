@@ -4,10 +4,11 @@ import { Prisma } from "@prisma/client";
 
 import { UserItem, UserItemSkeleton } from "./user-item";
 
+import { getFollowers } from "@/features/username/service/get-followers";
 import { useSidebar } from "../hooks/use-sidebar";
 
 type Props = {
-    data: Prisma.FollowGetPayload<{ include: { following: true } }>[];
+    data: Prisma.PromiseReturnType<typeof getFollowers>;
 };
 
 export const Following = ({ data }: Props) => {
@@ -31,6 +32,7 @@ export const Following = ({ data }: Props) => {
                         <UserItem
                             username={follow.following.username}
                             imageUrl={follow.following.imageUrl}
+                            isLive={follow.following.stream?.isLive}
                         />
                     </li>
                 ))}

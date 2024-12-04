@@ -77,11 +77,12 @@ export const createIngress = async (ingressType: IngressInput) => {
     }
 
     const ingress = await ingressClient.createIngress(ingressType, options);
-    console.log("🚀 ~ createIngress ~ ingress:", ingress);
 
     if (!ingress || !ingress.url || !ingress.streamKey) {
         throw new Error("Failed to create ingress");
     }
+
+    console.log("Ingress created", ingress);
 
     await db.stream.update({
         where: { userId: self.id },

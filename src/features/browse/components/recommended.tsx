@@ -1,12 +1,15 @@
 "use client";
 
-import { User } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
 import { useSidebar } from "../hooks/use-sidebar";
+import { getRecommended } from "../service/get-recommened";
+
+type UsersWithStream = Prisma.PromiseReturnType<typeof getRecommended>;
 
 type Props = {
-    users: User[];
+    users: UsersWithStream;
 };
 
 export const Recommended = ({ users }: Props) => {
@@ -28,6 +31,7 @@ export const Recommended = ({ users }: Props) => {
                         <UserItem
                             username={user.username}
                             imageUrl={user.imageUrl}
+                            isLive={user.stream?.isLive}
                         />
                     </li>
                 ))}
