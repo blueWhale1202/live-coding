@@ -6,10 +6,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Hint } from "@/components/hint";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 
-import { useSidebar } from "../hooks/use-sidebar";
+import { useCreatorSidebar } from "../hooks/use-sidebar-creator";
 
 export const Toggle = () => {
-    const { collapsed, onCollapse, onExpand } = useSidebar();
+    const { collapsed, onCollapse, onExpand } = useCreatorSidebar();
 
     const label = collapsed ? "Expand" : "Collapse";
 
@@ -29,8 +29,8 @@ export const Toggle = () => {
                 </div>
             )}
             {!collapsed && (
-                <div className="mb-2 flex w-full items-center p-3 pl-6">
-                    <p className="font-semibold text-primary">For you</p>
+                <div className="mb-2 hidden w-full items-center p-3 pl-6 lg:flex">
+                    <p className="font-semibold text-primary">Dashboard</p>
                     <Hint label={label} side="right" asChild>
                         <Button
                             className="ml-auto h-auto p-2"

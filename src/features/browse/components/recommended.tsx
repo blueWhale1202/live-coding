@@ -3,14 +3,14 @@
 import { User } from "@prisma/client";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
-import { useSidebar } from "@/providers/sidebar-store-provider";
+import { useSidebar } from "../hooks/use-sidebar";
 
 type Props = {
     users: User[];
 };
 
 export const Recommended = ({ users }: Props) => {
-    const { collapsed } = useSidebar((state) => state);
+    const { collapsed } = useSidebar();
 
     const showLabel = !collapsed && users.length > 0;
 

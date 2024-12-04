@@ -4,8 +4,8 @@ import { FollowingSkeleton } from "./following";
 import { RecommendedSkeleton } from "./recommended";
 import { ToggleSkeleton } from "./toggle";
 
-import { useSidebar } from "@/providers/sidebar-store-provider";
 import { useIsClient } from "usehooks-ts";
+import { useSidebar } from "../hooks/use-sidebar";
 
 import { cn } from "@/lib/utils";
 
@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const Wrapper = ({ children }: Props) => {
-    const { collapsed } = useSidebar((state) => state);
+    const { collapsed } = useSidebar();
 
     const isClient = useIsClient();
 
@@ -31,8 +31,8 @@ export const Wrapper = ({ children }: Props) => {
     return (
         <aside
             className={cn(
-                "fixed left-0 z-50 flex h-full w-60 flex-col border-r border-[#2d2e35] bg-background",
-                collapsed && "w-[70px]",
+                "fixed left-0 z-50 flex h-full w-[70px] flex-col border-r border-[#2d2e35] bg-background lg:w-60",
+                collapsed && "lg:w-[70px]",
             )}
         >
             {children}

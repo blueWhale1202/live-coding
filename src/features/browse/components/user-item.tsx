@@ -10,7 +10,7 @@ import { LiveBadge } from "@/components/live-badge";
 import { UserAvatar } from "@/components/user-avatar";
 
 import { cn } from "@/lib/utils";
-import { useSidebar } from "@/providers/sidebar-store-provider";
+import { useSidebar } from "../hooks/use-sidebar";
 
 type Props = {
     username: string;
@@ -21,7 +21,7 @@ type Props = {
 export const UserItem = ({ username, imageUrl, isLive }: Props) => {
     const pathname = usePathname();
 
-    const { collapsed } = useSidebar((state) => state);
+    const { collapsed } = useSidebar();
 
     const href = `/${username}`;
     const isActive = pathname === href;

@@ -7,7 +7,7 @@ import { dark } from "@clerk/themes";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-import { SidebarStoreProvider } from "@/providers/sidebar-store-provider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <ClerkProvider
-            afterSignOutUrl="/sign-in"
+            afterSignOutUrl="/"
             appearance={{
                 baseTheme: dark,
             }}
@@ -38,7 +38,7 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <SidebarStoreProvider>{children}</SidebarStoreProvider>
+                        <NuqsAdapter>{children}</NuqsAdapter>
                         <Toaster theme="light" richColors />
                     </ThemeProvider>
                 </body>

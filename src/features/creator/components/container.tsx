@@ -1,18 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
-
 import { useMediaQuery } from "usehooks-ts";
-import { useSidebar } from "../hooks/use-sidebar";
+import { useCreatorSidebar } from "../hooks/use-sidebar-creator";
 
 import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 
 type Props = {
     children: React.ReactNode;
 };
 
 export const Container = ({ children }: Props) => {
-    const { collapsed, onCollapse, onExpand } = useSidebar();
+    const { collapsed, onCollapse, onExpand } = useCreatorSidebar();
     const isMobile = useMediaQuery("(max-width: 1024px)");
 
     useEffect(() => {
@@ -22,6 +21,7 @@ export const Container = ({ children }: Props) => {
             onExpand();
         }
     }, [isMobile, onCollapse, onExpand]);
+
     return (
         <div className={cn("ml-[70px] flex-1", !collapsed && "lg:ml-60")}>
             {children}

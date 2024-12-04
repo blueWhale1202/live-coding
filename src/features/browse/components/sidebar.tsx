@@ -1,4 +1,4 @@
-import { getFollowers } from "@/features/username/service/follow";
+import { getFollowers } from "@/features/username/service/get-followers";
 import { getRecommended } from "../service/get-recommened";
 
 import { Following, FollowingSkeleton } from "./following";

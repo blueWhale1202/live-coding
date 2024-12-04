@@ -4,14 +4,14 @@ import { Prisma } from "@prisma/client";
 
 import { UserItem, UserItemSkeleton } from "./user-item";
 
-import { useSidebar } from "@/providers/sidebar-store-provider";
+import { useSidebar } from "../hooks/use-sidebar";
 
 type Props = {
     data: Prisma.FollowGetPayload<{ include: { following: true } }>[];
 };
 
 export const Following = ({ data }: Props) => {
-    const { collapsed } = useSidebar((state) => state);
+    const { collapsed } = useSidebar();
 
     if (!data.length) {
         return null;
