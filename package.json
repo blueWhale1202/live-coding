@@ -10,6 +10,7 @@
         "ui": "bunx shadcn@latest add",
         "db:gen": "bunx prisma generate",
         "db:push": "bunx prisma db push",
+        "db:reset": "bunx prisma migrate reset",
         "db:studio": "bunx prisma studio"
     },
     "dependencies": {
@@ -18,6 +19,7 @@
         "@prisma/client": "^6.0.1",
         "@radix-ui/react-avatar": "^1.1.1",
         "@radix-ui/react-slot": "^1.1.0",
+        "@radix-ui/react-switch": "^1.1.1",
         "@radix-ui/react-tooltip": "^1.1.4",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
