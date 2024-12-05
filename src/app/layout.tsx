@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "./api/uploadthing/core";
+
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 
 import { ThemeProvider } from "@/components/theme-provider";
+
 import { Toaster } from "@/components/ui/sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
@@ -32,6 +37,9 @@ export default function RootLayout({
         >
             <html lang="en" suppressHydrationWarning>
                 <body className={inter.className}>
+                    <NextSSRPlugin
+                        routerConfig={extractRouterConfig(ourFileRouter)}
+                    />
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"

@@ -1,10 +1,13 @@
 "use client";
 
 import { LiveKitRoom } from "@livekit/components-react";
-import { Prisma, Stream, User } from "@prisma/client";
+import { Prisma, Stream } from "@prisma/client";
 
 import { Chat, ChatSkeleton } from "@/features/chat/components/chat";
 import { ChatToggle } from "@/features/chat/components/chat-toggle";
+
+import { Header, HeaderSkeleton } from "./header";
+import { InfoCard } from "./info-card";
 import { Video, VideoSkeleton } from "./video";
 
 import { useChatSidebar } from "@/features/chat/hooks/use-chat-sidebar";
@@ -13,12 +16,10 @@ import { useViewerToken } from "../hooks/use-viewer-token";
 import { getUserByUsername } from "@/features/username/service/get-user-by-username";
 import { cn } from "@/lib/utils";
 
-type UserWithStream = Prisma.PromiseReturnType<typeof getUserByUsername> & {
-    user: User;
-};
+type UserWithStream = Prisma.PromiseReturnType<typeof getUserByUsername>;
 
 type Props = {
-    user: UserWithStream;
+    user: NonNullable<UserWithStream>;
     stream: Stream;
     isFollowing: boolean;
 };
@@ -49,6 +50,20 @@ export const StreamPlayer = ({ user, stream, isFollowing }: Props) => {
             >
                 <div className="hidden-scrollbar col-span-1 space-y-4 lg:col-span-2 lg:overflow-y-auto xl:col-span-2 2xl:col-span-5">
                     <Video hostName={user.username} hostIdentity={user.id} />
+                    <Header
+                        hostName={user.username}
+                        hostIdentity={user.id}
+                        viewerIdentity={identity}
+                        imageUrl={user.imageUrl}
+                        isFollowing={isFollowing}
+                        name={stream.name}
+                    />
+                    <InfoCard
+                        name={stream.name}
+                        viewerIdentity={identity}
+                        hostIdentity={user.id}
+                        thumbnailUrl={stream.thumbnailUrl}
+                    />
                 </div>
                 <div className={cn("col-span-1", collapsed && "hidden")}>
                     <Chat
@@ -71,6 +86,7 @@ export const StreamPlayerSkeleton = () => {
         <div className="grid h-full grid-cols-1 lg:grid-cols-3 lg:gap-y-0 xl:grid-cols-3 2xl:grid-cols-6">
             <div className="hidden-scrollbar col-span-1 space-y-4 pb-10 lg:col-span-2 lg:overflow-y-auto xl:col-span-2 2xl:col-span-5">
                 <VideoSkeleton />
+                <HeaderSkeleton />
             </div>
             <div className="col-span-1 bg-background">
                 <ChatSkeleton />
