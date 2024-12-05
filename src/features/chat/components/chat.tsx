@@ -1,21 +1,24 @@
 "use client";
 
-import {
-    ChatVariant,
-    useChatSidebar,
-} from "@/features/chat/hooks/use-chat-sidebar";
+import { useEffect, useMemo, useState } from "react";
+
+import { ChatCommunity } from "./chat-community";
+import { ChatForm, ChatFormSkeleton } from "./chat-form";
+import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
+import { ChatList, ChatListSkeleton } from "./chat-list";
+
 import {
     useChat,
     useConnectionState,
     useRemoteParticipant,
 } from "@livekit/components-react";
 import { ConnectionState } from "livekit-client";
-import { useEffect, useMemo, useState } from "react";
+
+import {
+    ChatVariant,
+    useChatSidebar,
+} from "@/features/chat/hooks/use-chat-sidebar";
 import { useMediaQuery } from "usehooks-ts";
-import { ChatCommunity } from "./chat-community";
-import { ChatForm, ChatFormSkeleton } from "./chat-form";
-import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
-import { ChatList, ChatListSkeleton } from "./chat-list";
 
 type Props = {
     hostName: string;

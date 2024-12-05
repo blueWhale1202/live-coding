@@ -1,12 +1,14 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+
+import { Hint } from "@/components/hint";
+import { MessageSquare, Users } from "lucide-react";
+
 import {
     ChatVariant,
     useChatSidebar,
 } from "@/features/chat/hooks/use-chat-sidebar";
-import { MessageSquare, Users } from "lucide-react";
-import { Hint } from "./hint";
-import { Button } from "./ui/button";
 
 export const VariantToggle = () => {
     const { variant, onChangeVariant } = useChatSidebar();

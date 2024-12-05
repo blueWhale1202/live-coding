@@ -1,11 +1,16 @@
-import { handleBlock } from "@/actions/block";
-import { cn } from "@/lib/utils";
+"use client";
+
+import { Hint } from "@/components/hint";
+import { Button } from "@/components/ui/button";
+
 import { MinusCircle } from "lucide-react";
+
+import { handleBlock } from "@/actions/block";
 import { useTransition } from "react";
 import { toast } from "sonner";
+
+import { cn } from "@/lib/utils";
 import stc from "string-to-color";
-import { Hint } from "./hint";
-import { Button } from "./ui/button";
 
 type Props = {
     hostName: string;
@@ -48,7 +53,7 @@ export const CommunityItem = ({
         >
             <p style={{ color }}>{participantName}</p>
             {isHost && !isSelf && (
-                <Hint label="Block">
+                <Hint label="Block" asChild>
                     <Button
                         variant="ghost"
                         className="size-auto p-1 opacity-0 transition group-hover:opacity-100"

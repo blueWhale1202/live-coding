@@ -6,10 +6,12 @@ import {
     useTracks,
 } from "@livekit/components-react";
 import { ConnectionState, Track } from "livekit-client";
+
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { LiveVideo } from "./live-video";
 import { LoadingVideo } from "./loading-video";
 import { OfflineVideo } from "./offline-video";
-import { Skeleton } from "./ui/skeleton";
 
 type Props = {
     hostName: string;

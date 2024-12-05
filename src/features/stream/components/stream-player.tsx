@@ -1,17 +1,17 @@
 "use client";
 
+import { LiveKitRoom } from "@livekit/components-react";
 import { Prisma, Stream, User } from "@prisma/client";
 
-import { LiveKitRoom } from "@livekit/components-react";
+import { Chat, ChatSkeleton } from "@/features/chat/components/chat";
+import { ChatToggle } from "@/features/chat/components/chat-toggle";
 import { Video, VideoSkeleton } from "./video";
 
-import { getUserByUsername } from "@/features/username/service/get-user-by-username";
-
 import { useChatSidebar } from "@/features/chat/hooks/use-chat-sidebar";
-import { useViewerToken } from "@/hooks/use-viewer-token";
+import { useViewerToken } from "../hooks/use-viewer-token";
+
+import { getUserByUsername } from "@/features/username/service/get-user-by-username";
 import { cn } from "@/lib/utils";
-import { Chat, ChatSkeleton } from "./chat";
-import { ChatToggle } from "./chat-toggle";
 
 type UserWithStream = Prisma.PromiseReturnType<typeof getUserByUsername> & {
     user: User;

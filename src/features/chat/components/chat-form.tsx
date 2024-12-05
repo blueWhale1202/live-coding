@@ -1,11 +1,14 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { ChatInfo } from "./chat-info";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Skeleton } from "./ui/skeleton";
+
+import { cn } from "@/lib/utils";
 
 type Props = {
     value: string;

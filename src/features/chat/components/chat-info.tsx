@@ -1,7 +1,7 @@
 "use client";
 
+import { Hint } from "@/components/hint";
 import { Info } from "lucide-react";
-import { Hint } from "./hint";
 
 type Props = {
     isDelayed: boolean;

@@ -1,5 +1,5 @@
+import { Hint } from "@/components/hint";
 import { Maximize, Minimize } from "lucide-react";
-import { Hint } from "./hint";
 
 type Props = {
     isFullscreen: boolean;

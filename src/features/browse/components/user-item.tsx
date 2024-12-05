@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import { LiveBadge } from "@/components/live-badge";
 import { UserAvatar } from "@/components/user-avatar";
+import { LiveBadge } from "@/features/stream/components/live-badge";
 
 import { cn } from "@/lib/utils";
 import { useSidebar } from "../hooks/use-sidebar";

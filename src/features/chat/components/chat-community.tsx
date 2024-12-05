@@ -1,10 +1,15 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { useParticipants } from "@livekit/components-react";
+"use client";
+
 import { LocalParticipant, RemoteParticipant } from "livekit-client";
 import { useMemo, useState } from "react";
+
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+import { useParticipants } from "@livekit/components-react";
 import { useDebounceValue } from "usehooks-ts";
+
 import { CommunityItem } from "./community-item";
-import { Input } from "./ui/input";
 
 type Participant = RemoteParticipant | LocalParticipant;
 
@@ -56,6 +61,7 @@ export const ChatCommunity = ({ viewerName, hostName, isHidden }: Props) => {
             <Input
                 className="border-white/10"
                 placeholder="Search community"
+                value={value}
                 onChange={(e) => onChange(e.target.value)}
             />
             <ScrollArea className="mt-4 gap-y-2">
