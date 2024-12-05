@@ -8,6 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { useMediaQuery } from "usehooks-ts";
 import { useCreatorSidebar } from "../hooks/use-sidebar-creator";
 
 type Props = {
@@ -19,6 +20,10 @@ type Props = {
 
 export const NavItem = ({ label, href, icon: Icon, isActive }: Props) => {
     const { collapsed } = useCreatorSidebar();
+    const isMobile = useMediaQuery("(max-width: 1024px)");
+
+    const isShowLabel = !isMobile && !collapsed;
+
     return (
         <Button
             asChild
@@ -31,8 +36,8 @@ export const NavItem = ({ label, href, icon: Icon, isActive }: Props) => {
         >
             <Link href={href}>
                 <div className="flex items-center gap-x-4">
-                    <Icon className={collapsed ? "mr-0" : "mr-2"} />
-                    {!collapsed && <span>{label}</span>}
+                    <Icon className={!isShowLabel ? "mr-0" : "mr-2"} />
+                    {isShowLabel && <span>{label}</span>}
                 </div>
             </Link>
         </Button>
