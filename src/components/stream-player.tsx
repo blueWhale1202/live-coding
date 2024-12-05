@@ -3,14 +3,14 @@
 import { Prisma, Stream, User } from "@prisma/client";
 
 import { LiveKitRoom } from "@livekit/components-react";
-import { Video } from "./video";
+import { Video, VideoSkeleton } from "./video";
 
 import { getUserByUsername } from "@/features/username/service/get-user-by-username";
 
 import { useChatSidebar } from "@/features/chat/hooks/use-chat-sidebar";
 import { useViewerToken } from "@/hooks/use-viewer-token";
 import { cn } from "@/lib/utils";
-import { Chat } from "./chat";
+import { Chat, ChatSkeleton } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 
 type UserWithStream = Prisma.PromiseReturnType<typeof getUserByUsername> & {
@@ -28,7 +28,7 @@ export const StreamPlayer = ({ user, stream, isFollowing }: Props) => {
     const { collapsed } = useChatSidebar();
 
     if (!token || !name || !identity) {
-        return <div>Cannot watch the stream</div>;
+        return <StreamPlayerSkeleton />;
     }
 
     return (
@@ -63,5 +63,18 @@ export const StreamPlayer = ({ user, stream, isFollowing }: Props) => {
                 </div>
             </LiveKitRoom>
         </>
+    );
+};
+
+export const StreamPlayerSkeleton = () => {
+    return (
+        <div className="grid h-full grid-cols-1 lg:grid-cols-3 lg:gap-y-0 xl:grid-cols-3 2xl:grid-cols-6">
+            <div className="hidden-scrollbar col-span-1 space-y-4 pb-10 lg:col-span-2 lg:overflow-y-auto xl:col-span-2 2xl:col-span-5">
+                <VideoSkeleton />
+            </div>
+            <div className="col-span-1 bg-background">
+                <ChatSkeleton />
+            </div>
+        </div>
     );
 };

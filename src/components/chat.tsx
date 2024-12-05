@@ -12,9 +12,10 @@ import {
 import { ConnectionState } from "livekit-client";
 import { useEffect, useMemo, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { ChatForm } from "./chat-form";
-import { ChatHeader } from "./chat-header";
-import { ChatList } from "./chat-list";
+import { ChatCommunity } from "./chat-community";
+import { ChatForm, ChatFormSkeleton } from "./chat-form";
+import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";
+import { ChatList, ChatListSkeleton } from "./chat-list";
 
 type Props = {
     hostName: string;
@@ -87,6 +88,23 @@ export const Chat = ({
                     />
                 </>
             )}
+            {variant === ChatVariant.COMMUNITY && (
+                <ChatCommunity
+                    hostName={hostName}
+                    viewerName={viewerName}
+                    isHidden={isHidden}
+                />
+            )}
+        </div>
+    );
+};
+
+export const ChatSkeleton = () => {
+    return (
+        <div className="flex h-[calc(100vh-80px)] flex-col border-2 border-b border-l pt-0">
+            <ChatHeaderSkeleton />
+            <ChatListSkeleton />
+            <ChatFormSkeleton />
         </div>
     );
 };
