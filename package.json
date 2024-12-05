@@ -7,6 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
+        "postinstall": "prisma generate",
         "ui": "bunx shadcn@latest add",
         "db:gen": "bunx prisma generate",
         "db:push": "bunx prisma db push",
