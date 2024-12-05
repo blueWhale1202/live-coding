@@ -1,7 +1,7 @@
 "use client";
 
 import { LiveKitRoom } from "@livekit/components-react";
-import { Prisma, Stream } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import { Chat, ChatSkeleton } from "@/features/chat/components/chat";
 import { ChatToggle } from "@/features/chat/components/chat-toggle";
@@ -17,11 +17,13 @@ import { useViewerToken } from "../hooks/use-viewer-token";
 import { getUserByUsername } from "@/features/username/service/get-user-by-username";
 import { cn } from "@/lib/utils";
 
-type UserWithStream = Prisma.PromiseReturnType<typeof getUserByUsername>;
+type UserWithStream = NonNullable<
+    Prisma.PromiseReturnType<typeof getUserByUsername>
+>;
 
 type Props = {
-    user: NonNullable<UserWithStream>;
-    stream: Stream;
+    user: UserWithStream;
+    stream: NonNullable<UserWithStream["stream"]>;
     isFollowing: boolean;
 };
 

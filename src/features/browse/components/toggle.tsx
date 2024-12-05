@@ -6,10 +6,12 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Hint } from "@/components/hint";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 
+import { useMediaQuery } from "usehooks-ts";
 import { useSidebar } from "../hooks/use-sidebar";
 
 export const Toggle = () => {
     const { collapsed, onCollapse, onExpand } = useSidebar();
+    const isMobile = useMediaQuery("(max-width: 1024px)");
 
     const label = collapsed ? "Expand" : "Collapse";
 
@@ -28,7 +30,7 @@ export const Toggle = () => {
                     </Hint>
                 </div>
             )}
-            {!collapsed && (
+            {!collapsed && !isMobile && (
                 <div className="mb-2 flex w-full items-center p-3 pl-6">
                     <p className="font-semibold text-primary">For you</p>
                     <Hint label={label} side="right" asChild>

@@ -1,11 +1,12 @@
 "use client";
 
 import { Prisma } from "@prisma/client";
-
 import { UserItem, UserItemSkeleton } from "./user-item";
 
-import { getFollowers } from "@/features/username/service/get-followers";
+import { useMediaQuery } from "usehooks-ts";
 import { useSidebar } from "../hooks/use-sidebar";
+
+import { getFollowers } from "@/features/username/service/get-followers";
 
 type Props = {
     data: Prisma.PromiseReturnType<typeof getFollowers>;
@@ -13,6 +14,8 @@ type Props = {
 
 export const Following = ({ data }: Props) => {
     const { collapsed } = useSidebar();
+    const isMobile = useMediaQuery("(max-width: 1024px)");
+    console.log("🚀 ~ Following ~ isMobile:", isMobile);
 
     if (!data.length) {
         return null;
@@ -20,7 +23,7 @@ export const Following = ({ data }: Props) => {
 
     return (
         <div>
-            {!collapsed && (
+            {!collapsed && !isMobile && (
                 <div className="mb-4 pl-6">
                     <p className="text-sm text-muted-foreground">Following</p>
                 </div>

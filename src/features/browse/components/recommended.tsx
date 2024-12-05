@@ -3,6 +3,7 @@
 import { Prisma } from "@prisma/client";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
+import { useMediaQuery } from "usehooks-ts";
 import { useSidebar } from "../hooks/use-sidebar";
 import { getRecommended } from "../service/get-recommened";
 
@@ -14,8 +15,9 @@ type Props = {
 
 export const Recommended = ({ users }: Props) => {
     const { collapsed } = useSidebar();
+    const isMobile = useMediaQuery("(max-width: 1024px)");
 
-    const showLabel = !collapsed && users.length > 0;
+    const showLabel = !collapsed && !isMobile && users.length > 0;
 
     return (
         <div>
