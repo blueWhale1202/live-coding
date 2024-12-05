@@ -19,6 +19,7 @@ export const useViewerToken = (hostIdentity: string) => {
                 setToken(viewerToken);
 
                 const decodedToken = jwtDecode<Payload>(viewerToken);
+                console.log("🚀 ~ createToken ~ decodedToken:", decodedToken);
 
                 const name = decodedToken.name;
                 const identity = decodedToken.sub;
