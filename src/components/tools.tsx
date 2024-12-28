@@ -15,7 +15,6 @@ import {
     DraftingCompass,
     ListCollapse,
     MessageCircleMore,
-    SquareArrowOutUpRight,
     SquareTerminal,
 } from "lucide-react";
 import Link from "next/link";
@@ -26,7 +25,6 @@ export const Tools = () => {
             <DropdownMenu>
                 <DropdownMenuTrigger>
                     <ListCollapse />
-                    <SquareArrowOutUpRight className="ml-auto" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                     side="right"
