@@ -1,6 +1,7 @@
 import { getFollowers } from "@/features/username/service/get-followers";
 import { getRecommended } from "../service/get-recommened";
 
+import { Tools } from "@/components/tools";
 import { Following, FollowingSkeleton } from "./following";
 import { Recommended, RecommendedSkeleton } from "./recommended";
 import { Toggle, ToggleSkeleton } from "./toggle";
@@ -17,6 +18,7 @@ export const Sidebar = async () => {
                 <Following data={following} />
                 <Recommended users={recommended} />
             </div>
+            <Tools />
         </Wrapper>
     );
 };

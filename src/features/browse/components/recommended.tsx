@@ -3,7 +3,6 @@
 import { Prisma } from "@prisma/client";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
-import { Tools } from "@/components/tools";
 import { useSidebar } from "@/stores/use-sidebar";
 import { useMediaQuery } from "usehooks-ts";
 import { getRecommended } from "../service/get-recommened";
@@ -39,8 +38,6 @@ export const Recommended = ({ users }: Props) => {
                     </li>
                 ))}
             </ul>
-
-            <Tools />
         </div>
     );
 };
