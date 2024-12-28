@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -11,13 +9,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import {
-    AlarmClockCheck,
-    BookOpen,
-    DraftingCompass,
-    MessageCircleMore,
-    SquareTerminal,
-} from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 export const Tools = () => {
     return (
@@ -31,35 +23,11 @@ export const Tools = () => {
                 >
                     <DropdownMenuLabel>Tools</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="p-2.5" asChild>
-                        <Link href={process.env.NEXT_PUBLIC_COURSE_URL!}>
+                    <DropdownMenuItem className="p-2.5">
+                        <a href={process.env.NEXT_PUBLIC_COURSE_URL!}>
                             <BookOpen />
                             Courses
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="p-2.5" asChild>
-                        <Link href={process.env.NEXT_PUBLIC_FORUM_URL!}>
-                            <MessageCircleMore />
-                            Forum
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="p-2.5" asChild>
-                        <Link href={process.env.NEXT_PUBLIC_TASK_MANAGER_URL!}>
-                            <AlarmClockCheck />
-                            Task Manager
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="p-2.5" asChild>
-                        <Link href={process.env.NEXT_PUBLIC_DRAW_APP_URL!}>
-                            <DraftingCompass />
-                            Drawing App
-                        </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="p-2.5" asChild>
-                        <Link href={process.env.NEXT_PUBLIC_EDITOR_URL!}>
-                            <SquareTerminal />
-                            Code Editor
-                        </Link>
+                        </a>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
