@@ -9,7 +9,6 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { cn } from "@/lib/utils";
 import {
     AlarmClockCheck,
     BookOpen,
@@ -20,22 +19,14 @@ import {
     SquareTerminal,
 } from "lucide-react";
 import Link from "next/link";
-import { Button } from "./ui/button";
 
 export const Tools = () => {
     return (
         <div className="mt-auto">
             <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button
-                        variant="ghost"
-                        className={cn(
-                            "h-12 w-full cursor-pointer group-data-[state=open]:bg-accent",
-                        )}
-                    >
-                        <ListCollapse />
-                        <SquareArrowOutUpRight className="ml-auto" />
-                    </Button>
+                <DropdownMenuTrigger>
+                    <ListCollapse />
+                    <SquareArrowOutUpRight className="ml-auto" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                     side="right"
