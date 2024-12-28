@@ -3,8 +3,8 @@
 import { Prisma } from "@prisma/client";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
+import { useSidebar } from "@/stores/use-sidebar";
 import { useMediaQuery } from "usehooks-ts";
-import { useSidebar } from "../hooks/use-sidebar";
 import { getRecommended } from "../service/get-recommened";
 
 type UsersWithStream = Prisma.PromiseReturnType<typeof getRecommended>;

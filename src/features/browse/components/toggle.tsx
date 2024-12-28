@@ -6,8 +6,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Hint } from "@/components/hint";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 
+import { useSidebar } from "@/stores/use-sidebar";
 import { useMediaQuery } from "usehooks-ts";
-import { useSidebar } from "../hooks/use-sidebar";
 
 export const Toggle = () => {
     const { collapsed, onCollapse, onExpand } = useSidebar();

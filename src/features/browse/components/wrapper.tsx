@@ -4,8 +4,8 @@ import { FollowingSkeleton } from "./following";
 import { RecommendedSkeleton } from "./recommended";
 import { ToggleSkeleton } from "./toggle";
 
+import { useSidebar } from "@/stores/use-sidebar";
 import { useIsClient } from "usehooks-ts";
-import { useSidebar } from "../hooks/use-sidebar";
 
 import { cn } from "@/lib/utils";
 
@@ -31,7 +31,7 @@ export const Wrapper = ({ children }: Props) => {
     return (
         <aside
             className={cn(
-                "fixed left-0 z-50 flex h-full w-[70px] flex-col border-r border-[#2d2e35] bg-background lg:w-60",
+                "fixed left-0 z-50 flex h-[calc(100%-80px)] w-[70px] flex-col border-r border-[#2d2e35] bg-background lg:w-60",
                 collapsed && "lg:w-[70px]",
             )}
         >

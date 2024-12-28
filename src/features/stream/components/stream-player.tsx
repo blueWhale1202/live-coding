@@ -11,7 +11,7 @@ import { Header, HeaderSkeleton } from "./header";
 import { InfoCard } from "./info-card";
 import { Video, VideoSkeleton } from "./video";
 
-import { useChatSidebar } from "@/features/chat/hooks/use-chat-sidebar";
+import { useChatSidebar } from "@/stores/use-chat-sidebar";
 import { useViewerToken } from "../hooks/use-viewer-token";
 
 import { getUserByUsername } from "@/features/username/service/get-user-by-username";

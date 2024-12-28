@@ -3,8 +3,8 @@
 import { Prisma } from "@prisma/client";
 import { UserItem, UserItemSkeleton } from "./user-item";
 
+import { useSidebar } from "@/stores/use-sidebar";
 import { useMediaQuery } from "usehooks-ts";
-import { useSidebar } from "../hooks/use-sidebar";
 
 import { getFollowers } from "@/features/username/service/get-followers";
 
@@ -15,7 +15,6 @@ type Props = {
 export const Following = ({ data }: Props) => {
     const { collapsed } = useSidebar();
     const isMobile = useMediaQuery("(max-width: 1024px)");
-    console.log("🚀 ~ Following ~ isMobile:", isMobile);
 
     if (!data.length) {
         return null;

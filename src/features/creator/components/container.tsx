@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 
+import { useCreatorSidebar } from "@/stores/use-creator-sidebar";
 import { useMediaQuery } from "usehooks-ts";
-import { useCreatorSidebar } from "../hooks/use-sidebar-creator";
 
 import { cn } from "@/lib/utils";
 

@@ -8,8 +8,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { LucideIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { useCreatorSidebar } from "@/stores/use-creator-sidebar";
 import { useMediaQuery } from "usehooks-ts";
-import { useCreatorSidebar } from "../hooks/use-sidebar-creator";
 
 type Props = {
     label: string;

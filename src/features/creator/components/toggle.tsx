@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Hint } from "@/components/hint";
 import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 
-import { useCreatorSidebar } from "../hooks/use-sidebar-creator";
+import { useCreatorSidebar } from "@/stores/use-creator-sidebar";
 
 export const Toggle = () => {
     const { collapsed, onCollapse, onExpand } = useCreatorSidebar();
