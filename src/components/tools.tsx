@@ -28,16 +28,13 @@ export const Tools = () => {
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button
-                        asChild
                         variant="ghost"
                         className={cn(
                             "h-12 w-full cursor-pointer group-data-[state=open]:bg-accent",
                         )}
                     >
-                        <div className="flex w-full items-center">
-                            <ListCollapse />
-                            <SquareArrowOutUpRight className="ml-auto" />
-                        </div>
+                        <ListCollapse />
+                        <SquareArrowOutUpRight className="ml-auto" />
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
