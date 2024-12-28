@@ -24,8 +24,8 @@ export const Tools = () => {
                 >
                     <DropdownMenuLabel>Tools</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="p-2.5">
-                        <Link href={process.env.NEXT_PUBLIC_COURSE_URL!}>
+                    <DropdownMenuItem className="p-2.5" asChild>
+                        <Link href={"/courses"}>
                             <BookOpen />
                             Courses
                         </Link>
