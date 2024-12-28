@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { BookOpen } from "lucide-react";
+import Link from "next/link";
 
 export const Tools = () => {
     return (
@@ -24,10 +25,10 @@ export const Tools = () => {
                     <DropdownMenuLabel>Tools</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem className="p-2.5">
-                        <a href={process.env.NEXT_PUBLIC_COURSE_URL!}>
+                        <Link href={process.env.NEXT_PUBLIC_COURSE_URL!}>
                             <BookOpen />
                             Courses
-                        </a>
+                        </Link>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
