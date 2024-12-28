@@ -26,6 +26,7 @@ import {
 import { cn } from "@/lib/utils";
 
 import { useSidebar } from "@/stores/use-sidebar";
+import { useState } from "react";
 import { useIsClient, useMediaQuery } from "usehooks-ts";
 
 export const Tools = () => {
@@ -33,6 +34,8 @@ export const Tools = () => {
 
     const isClient = useIsClient();
     const isMobile = useMediaQuery("(max-width: 1024px)");
+
+    const [open, setOpen] = useState(false);
 
     const label = "More tools";
 
@@ -42,7 +45,7 @@ export const Tools = () => {
 
     return (
         <div className="mt-auto">
-            <DropdownMenu>
+            <DropdownMenu open={open} onOpenChange={() => setOpen(false)}>
                 <DropdownMenuTrigger asChild className="group p-3">
                     <div className="w-full">
                         {collapsed && (
@@ -51,6 +54,7 @@ export const Tools = () => {
                                     variant="ghost"
                                     size="icon"
                                     className="group-data-[state=open]:bg-accent"
+                                    onClick={() => setOpen(true)}
                                 >
                                     <SquareArrowOutUpRight />
                                 </Button>
@@ -60,6 +64,7 @@ export const Tools = () => {
                             <Button
                                 asChild
                                 variant="ghost"
+                                onClick={() => setOpen(true)}
                                 className={cn(
                                     "h-12 w-full cursor-pointer group-data-[state=open]:bg-accent",
                                     collapsed
