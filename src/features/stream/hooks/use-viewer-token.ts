@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
+
 import { createViewerToken } from "@/actions/token";
 import { jwtDecode, JwtPayload } from "jwt-decode";
-import { useEffect, useState } from "react";
+
 import { toast } from "sonner";
 
 type Payload = JwtPayload & {

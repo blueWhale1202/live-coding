@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useCreatorSidebar } from "../hooks/use-sidebar-creator";
+import { useCreatorSidebar } from "@/stores/use-creator-sidebar";
 
 type Props = {
     children: React.ReactNode;

@@ -10,7 +10,7 @@ import { UserAvatar } from "@/components/user-avatar";
 import { LiveBadge } from "@/features/stream/components/live-badge";
 
 import { cn } from "@/lib/utils";
-import { useSidebar } from "../hooks/use-sidebar";
+import { useSidebar } from "@/stores/use-sidebar";
 
 type Props = {
     username: string;

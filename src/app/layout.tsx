@@ -12,7 +12,6 @@ import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/components/theme-provider";
 
 import { Toaster } from "@/components/ui/sonner";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -78,11 +77,11 @@ export default function RootLayout({
                     />
                     <ThemeProvider
                         attribute="class"
-                        defaultTheme="system"
+                        defaultTheme="dark"
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <NuqsAdapter>{children}</NuqsAdapter>
+                        {children}
                         <Toaster theme="light" richColors />
                     </ThemeProvider>
                 </body>

@@ -4,8 +4,8 @@ import { FollowingSkeleton } from "./following";
 import { RecommendedSkeleton } from "./recommended";
 import { ToggleSkeleton } from "./toggle";
 
+import { useSidebar } from "@/stores/use-sidebar";
 import { useIsClient } from "usehooks-ts";
-import { useSidebar } from "../hooks/use-sidebar";
 
 import { cn } from "@/lib/utils";
 

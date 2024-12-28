@@ -14,10 +14,7 @@ import {
 } from "@livekit/components-react";
 import { ConnectionState } from "livekit-client";
 
-import {
-    ChatVariant,
-    useChatSidebar,
-} from "@/features/chat/hooks/use-chat-sidebar";
+import { ChatVariant, useChatSidebar } from "@/stores/use-chat-sidebar";
 import { useMediaQuery } from "usehooks-ts";
 
 type Props = {
