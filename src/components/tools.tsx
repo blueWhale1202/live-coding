@@ -26,13 +26,19 @@ import {
 import { cn } from "@/lib/utils";
 
 import { useSidebar } from "@/stores/use-sidebar";
-import { useMediaQuery } from "usehooks-ts";
+import { useIsClient, useMediaQuery } from "usehooks-ts";
 
 export const Tools = () => {
     const { collapsed } = useSidebar();
+
+    const isClient = useIsClient();
     const isMobile = useMediaQuery("(max-width: 1024px)");
 
     const label = "More tools";
+
+    if (!isClient) {
+        return null;
+    }
 
     return (
         <div className="mt-auto">
